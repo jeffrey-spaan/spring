@@ -1,4 +1,4 @@
-package com.example.i18n;
+package com.example.i18n.common.i18n;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +37,7 @@ import java.util.Locale;
  */
 @Service
 @RequiredArgsConstructor
-class I18nService {
+class I18nServiceImpl implements I18nService {
 
     private final MessageSource messageSource;
 

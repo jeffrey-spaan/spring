@@ -29,7 +29,7 @@ Spring Boot simplifies the process of internationalization through its built-in 
 For this basic example we will start with a simple REST endpoint which we can call to see the i18n implementation at work.<br>
 Lets create an application using the dependencies as previewed:
 
-![01-start-spring-io](https://github.com/jeffrey-spaan/spring/tree/main/spring-boot-internationalization-i18n/blob/main/images/01-start-spring-io.jpg)
+![01-start-spring-io](https://github.com/jeffrey-spaan/spring/blob/main/spring-boot-internationalization-i18n/images/01-start-spring-io.jpg)
 
 [![](https://img.shields.io/badge/Lombok-8A2BE2)]()
 Because it is just that easy to use.
@@ -80,7 +80,7 @@ English must be our standard language if no language tag is provided in the REST
 `messages_de.properties` = containing the German messages.<br/>
 `messages_nl.properties` = containing the Dutch messages.
 
-![02-i18n-folder](https://github.com/jeffrey-spaan/spring/tree/main/spring-boot-internationalization-i18n/blob/main/images/02-i18n-folder.jpg)
+![02-i18n-folder](https://github.com/jeffrey-spaan/spring/blob/main/spring-boot-internationalization-i18n/images/02-i18n-folder.jpg)
 
 In each of the messages bundle files, we will configure six codes:
 - `hello.world.log`
@@ -139,34 +139,35 @@ public record DemoController(I18nService i18nService) {
 `@RequestMapping` is used to map requests to controller methods. In this case our endpoint starts with `/api/v1`<br/>
 `@Slf4j` is the most commonly used logging annotation for Spring Boot applications.
 
-### 2.5 The I18nService
+### 2.5 The I18nServiceImpl
 
 Now the fun begins.<br/>
-The `I18nService` is specifically designed to receive both `message codes` with and without arguments.<br/>
+The `I18nServiceImpl` is specifically designed to receive both `message codes` with and without arguments.<br/>
 Apart from that, it automatically retrieves the `HttpServletRequest`, enabling the access to the user's request and retrieving their locale (local language).<br/>
 It is a powerful and essential tool within our <strong>i18n Internationalization</strong> implementation.
 
-`I18nService.java`
+`I18nServiceImpl.java`
+
 ```java
 @Service
 @RequiredArgsConstructor
-public class I18nService {
+public class I18nServiceImpl implements I18nService {
 
-  private final MessageSource messageSource;
+    private final MessageSource messageSource;
 
-  private final HttpServletRequest request;
+    private final HttpServletRequest request;
 
-  // The logging language is set within the application.yml file
-  @Value("${spring.messages.logging-language}")
-  private String loggingLanguage;
+    // The logging language is set within the application.yml file
+    @Value("${spring.messages.logging-language}")
+    private String loggingLanguage;
 
-  public String getLogMessage(String code) {
-    return messageSource.getMessage(code, null, Locale.of(loggingLanguage));
-  }
+    public String getLogMessage(String code) {
+        return messageSource.getMessage(code, null, Locale.of(loggingLanguage));
+    }
 
-  public String getMessage(String code, @Nullable String... args) {
-    return messageSource.getMessage(code, args, request.getLocale());
-  }
+    public String getMessage(String code, @Nullable String... args) {
+        return messageSource.getMessage(code, args, request.getLocale());
+    }
 }
 ```
 
@@ -201,26 +202,26 @@ public class I18nService {
 <small>Endpoint:</small> `http://localhost:8081/api/v1/hello`<br/>
 <small>Header:</small> <b>Key</b> `Accept-Language` - <b>Value</b> `en`, `de` or `nl`
 
-![03-postman-get-hello](https://github.com/jeffrey-spaan/spring/tree/main/spring-boot-internationalization-i18n/blob/main/images/03-postman-get-hello.jpg)
+![03-postman-get-hello](https://github.com/jeffrey-spaan/spring/blob/main/spring-boot-internationalization-i18n/images/03-postman-get-hello.jpg)
 <br><br>
 
 [![](https://img.shields.io/badge/GET-green)]()<br/>
 <small>Endpoint:</small> `http://localhost:8081/api/v1/hello/{name}`<br/>
 <small>Header:</small> <b>Key</b> `Accept-Language` - <b>Value</b> `en`, `de` or `nl`
 
-![04-postman-get-hello-name](https://github.com/jeffrey-spaan/spring/tree/main/spring-boot-internationalization-i18n/blob/main/images/04-postman-get-hello-name.jpg)
+![04-postman-get-hello-name](https://github.com/jeffrey-spaan/spring/blob/main/spring-boot-internationalization-i18n/images/04-postman-get-hello-name.jpg)
 <br><br>
 
 [![](https://img.shields.io/badge/GET-green)]()<br/>
 <small>Endpoint:</small> `http://localhost:8081/api/v1/hello/multi`<br/>
 <small>Header:</small> <b>Key</b> `Accept-Language` - <b>Value</b> `en`, `de` or `nl`
 
-![05-postman-get-hello-multi](https://github.com/jeffrey-spaan/spring/tree/main/spring-boot-internationalization-i18n/blob/main/images/05-postman-get-hello-multi.jpg)
+![05-postman-get-hello-multi](https://github.com/jeffrey-spaan/spring/blob/main/spring-boot-internationalization-i18n/images/05-postman-get-hello-multi.jpg)
 <br><br>
 
 The logging messages are shown within the <strong>Spring Boot</strong> <b>application terminal</b>.
 
-![06-i18n-internationalization-logging](https://github.com/jeffrey-spaan/spring/tree/main/spring-boot-internationalization-i18n/blob/main/images/06-i18n-internationalization-logging.jpg)
+![06-i18n-internationalization-logging](https://github.com/jeffrey-spaan/spring/blob/main/spring-boot-internationalization-i18n/images/06-i18n-internationalization-logging.jpg)
 
 
 ## Let's Stay Connected

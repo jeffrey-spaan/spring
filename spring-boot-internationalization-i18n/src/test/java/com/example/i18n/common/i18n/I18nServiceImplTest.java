@@ -1,4 +1,4 @@
-package com.example.i18n;
+package com.example.i18n.common.i18n;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -15,13 +15,13 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-class I18nServiceTest {
+class I18nServiceImplTest {
 
     @Mock
     private MessageSource messageSource;
 
     @Autowired
-    private I18nService i18nService;
+    private I18nServiceImpl i18nServiceImpl;
 
     @Value("${spring.messages.logging-language}")
     private String loggingLanguage;
@@ -35,8 +35,8 @@ class I18nServiceTest {
                 .thenReturn(expectedMessage);
 
         // Act
-        i18nService.setLoggingLanguage(loggingLanguage);
-        String actualMessage = i18nService.getLogMessage(code);
+        i18nServiceImpl.setLoggingLanguage(loggingLanguage);
+        String actualMessage = i18nServiceImpl.getLogMessage(code);
 
         // Assert
         assertEquals(expectedMessage, actualMessage);
@@ -51,7 +51,7 @@ class I18nServiceTest {
         when(messageSource.getMessage(code, args, Locale.US)).thenReturn(expectedMessage);
 
         // Act
-        String actualMessage = i18nService.getMessage(code, args);
+        String actualMessage = i18nServiceImpl.getMessage(code, args);
 
         // Assert
         assertEquals(expectedMessage, actualMessage);
@@ -65,7 +65,7 @@ class I18nServiceTest {
         when(messageSource.getMessage(code, null, Locale.US)).thenReturn(expectedMessage);
 
         // Act
-        String actualMessage = i18nService.getMessage(code);
+        String actualMessage = i18nServiceImpl.getMessage(code);
 
         // Assert
         assertEquals(expectedMessage, actualMessage);

@@ -1,5 +1,6 @@
 package com.example.i18n;
 
+import com.example.i18n.common.i18n.I18nService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 

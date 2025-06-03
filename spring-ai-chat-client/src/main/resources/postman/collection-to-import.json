@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "c5efd829-7d40-4cfc-8d97-b63a5583f1c6",
+		"name": "spring-ai-chat-client",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21205305"
+	},
+	"item": [
+		{
+			"name": "createPlan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"gender\": \"male\",\r\n    \"age\": \"38\",\r\n    \"height\": \"180cm\",\r\n    \"currentWeight\": \"90kg\",\r\n    \"targetWeight\": \"80kg\",\r\n    \"currentFatPercentage\": \"30 percent\",\r\n    \"targetFatPercentage\": \"10 percent\",\r\n    \"dietPreference\": \"none\",\r\n    \"goal\": \"build muscle\",\r\n    \"sportType\": \"gym\",\r\n    \"trainingDaysPerWeek\": \"3\",\r\n    \"additionalDetails\": \"none\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/chatclient",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"chatclient"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,23 @@
+##############################
+###### GENERAL SETTINGS ######
+##############################
+server:
+  port: ${SERVER_PORT}
+  servlet:
+    context-path: ${SERVER_CONTEXT_PATH}
+spring:
+  application:
+    name: ${SPRING_APPLICATION_NAME}
+  config:
+    import:
+      - optional:file:.env[.properties]
+
+##############################
+######## AI SETTINGS #########
+##############################
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: ${OPENAI_CHAT_MODEL}

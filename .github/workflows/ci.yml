@@ -1,0 +1,36 @@
+name: Install, build and test spring projects
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  install_build_test_spring_projects:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project:
+          # - spring-ai-chat-client
+          - spring-boot-bean-validation
+          - spring-boot-global-exception-handling
+          - spring-boot-internationalization-i18n
+          # - spring-security-oauth2-resource-server-credentials-jwt
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Maven clean install
+        run: |
+          cd ${{ matrix.project }}
+          mvn clean install
+
+      - name: Maven test
+        run: |
+          cd ${{ matrix.project }}
+          mvn test

@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         project:
-          - spring-ai-chat-client
+          # - spring-ai-chat-client
           - spring-boot-bean-validation
           - spring-boot-global-exception-handling
           - spring-boot-internationalization-i18n

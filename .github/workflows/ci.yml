@@ -25,11 +25,6 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Docker compose up
-        run: |
-          cd ${{ matrix.project }}
-          docker compose up -d
-
       - name: Maven clean install
         run: |
           cd ${{ matrix.project }}
@@ -39,8 +34,3 @@ jobs:
         run: |
           cd ${{ matrix.project }}
           mvn test
-
-      - name: Docker compose down
-        run: |
-          cd ${{ matrix.project }}
-          docker compose down

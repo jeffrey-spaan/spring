@@ -10,22 +10,22 @@ updates:
     schedule:
       interval: "weekly"
 
-- package-ecosystem: "maven" # See documentation for possible values
-    directory: "/spring-boot-bean-validation" # Location of package manifests
+  - package-ecosystem: "maven"
+    directory: "/spring-boot-bean-validation"
     schedule:
       interval: "weekly"
 
-- package-ecosystem: "maven" # See documentation for possible values
-    directory: "/spring-boot-global-exception-handling" # Location of package manifests
+  - package-ecosystem: "maven"
+    directory: "/spring-boot-global-exception-handling"
     schedule:
       interval: "weekly"
 
-- package-ecosystem: "maven" # See documentation for possible values
-    directory: "/spring-boot-internationalization-i18n" # Location of package manifests
+  - package-ecosystem: "maven"
+    directory: "/spring-boot-internationalization-i18n"
     schedule:
       interval: "weekly"
 
-- package-ecosystem: "maven" # See documentation for possible values
-    directory: "/spring-security-oauth2-resource-server-credentials-jwt" # Location of package manifests
+  - package-ecosystem: "maven"
+    directory: "/spring-security-oauth2-resource-server-credentials-jwt"
     schedule:
       interval: "weekly"
